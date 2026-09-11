@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LUIS CONTES | Official Hub</title>
+    <!-- Font Awesome Icons & Google Fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-color: #0b0c10;
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --card-border: rgba(255, 255, 255, 0.12);
+            --primary: #8a2be2;
+            --primary-gradient: linear-gradient(135deg, #a100ff 0%, #00f0ff 100%);
+            --text-main: #ffffff;
+            --text-sub: #a0a5b5;
+            --3d-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.5);
+            --btn-3d-shadow: 0 6px 0px #5c00b3, 0 12px 20px rgba(0, 0, 0, 0.4);
+            --btn-3d-active: 0 2px 0px #5c00b3, 0 4px 10px rgba(0, 0, 0, 0.4);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding-bottom: 60px;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(138, 43, 226, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(0, 240, 255, 0.12) 0%, transparent 40%);
+        }
+
+        /* Container Main */
+        .app-container {
+            width: 100%;
+            max-width: 680px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        /* Cover & Profile Header */
+        .header-card {
+            position: relative;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 28px;
+            overflow: hidden;
+            backdrop-filter: blur(16px);
+            box-shadow: var(--3d-shadow);
+            margin-top: 20px;
+        }
+
+        .cover-image {
+            width: 100%;
+            height: 200px;
+            background: var(--primary-gradient);
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .cover-upload-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(8px);
+            border: 1px solid var(--card-border);
+            color: #fff;
+            padding: 8px 14px;
+            border-radius: 20px;
+            font-size: 12px;
+            cursor: pointer;
+            z-index: 2;
+        }
+
+        .profile-wrapper {
+            position: relative;
+            text-align: center;
+            padding: 0 20px 25px 20px;
+            margin-top: -60px;
+        }
+
+        .profile-img-container {
+            position: relative;
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 15px;
+        }
+
+        .profile-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 4px solid #121318;
+            object-fit: cover;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.6);
+        }
+
+        .profile-upload-btn {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            background: var(--primary);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            border: 2px solid #121318;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        .profile-name {
+            font-size: 28px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            margin-bottom: 6px;
+            background: linear-gradient(180deg, #FFFFFF 0%, #C3C7DB 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .profile-bio {
+            font-size: 14px;
+            color: var(--text-sub);
+            max-width: 80%;
+            margin: 0 auto 20px;
+            line-height: 1.5;
+        }
+
+        /* 3D Social Icons Bar */
+        .social-grid {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 10px;
+        }
+
+        .social-3d-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 16px;
+            background: linear-gradient(145deg, rgba(255,255,255,0.1), rgba(255,255,255,0.02));
+            border: 1px solid var(--card-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 20px;
+            text-decoration: none;
+            box-shadow: 0 6px 0px rgba(0, 0, 0, 0.4), 0 8px 15px rgba(0, 0, 0, 0.3);
+            transform: translateY(0);
+        }
+
+        .social-3d-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 9px 0px rgba(0, 0, 0, 0.4), 0 12px 20px rgba(138, 43, 226, 0.3);
+            color: #00f0ff;
+        }
+
+        .social-3d-btn:active {
+            transform: translateY(3px);
+            box-shadow: 0 3px 0px rgba(0, 0, 0, 0.4), 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Editable Section Title */
+        .section-block {
+            margin-top: 30px;
+            position: relative;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            padding: 0 10px;
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #e0e5ff;
+        }
+
+        .section-title i {
+            color: #00f0ff;
+        }
+
+        /* 3D Action Links/Buttons */
+        .links-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .btn-3d-link {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 20px;
+            background: linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.03) 100%);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            position: relative;
+            box-shadow: var(--btn-3d-shadow);
+            transform: translateY(0);
+        }
+
+        .btn-3d-link:hover {
+            transform: translateY(-3px);
+            background: linear-gradient(135deg, rgba(138, 43, 226, 0.3) 0%, rgba(0, 240, 255, 0.2) 100%);
+            border-color: rgba(0, 240, 255, 0.4);
+            box-shadow: 0 9px 0px #5c00b3, 0 15px 25px rgba(0, 240, 255, 0.2);
+        }
+
+        .btn-3d-link:active {
+            transform: translateY(4px);
+            box-shadow: var(--btn-3d-active);
+        }
+
+        .btn-3d-link .link-left {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .btn-3d-link i.icon-main {
+            font-size: 22px;
+            width: 30px;
+            text-align: center;
+            color: #00f0ff;
+        }
+
+        /* Carousel Horizontal (For Shorts/Videos) */
+        .carousel-container {
+            display: flex;
+            gap: 15px;
+            overflow-x: auto;
+            padding: 10px 5px 20px 5px;
+            scroll-snap-type: x mandatory;
+            scrollbar-width: thin;
+            scrollbar-color: var(--primary) transparent;
+        }
+
+        .carousel-card {
+            flex: 0 0 220px;
+            height: 380px;
+            border-radius: 20px;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            scroll-snap-align: start;
+            overflow: hidden;
+            position: relative;
+            box-shadow: var(--3d-shadow);
+        }
+
+        .carousel-card iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Control Panel Float */
+        .admin-controls {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 999;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .admin-btn {
+            background: var(--primary-gradient);
+            color: white;
+            border: none;
+            padding: 14px 20px;
+            border-radius: 30px;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .admin-btn:hover {
+            transform: scale(1.05);
+        }
+
+        /* Editable Helpers */
+        [contenteditable="true"] {
+            outline: 2px dashed rgba(0, 240, 255, 0.5);
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+
+        .delete-btn {
+            background: #ff3b30;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            margin-left: 8px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="app-container">
+        
+        <!-- HEADER PROFILE SECTION -->
+        <div class="header-card">
+            <div class="cover-image" id="coverImg" style="background-image: url('https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=1000&auto=format&fit=crop');">
+                <button class="cover-upload-btn" onclick="changeImage('cover')"><i class="fa-solid fa-camera"></i> Cambiar Portada</button>
+            </div>
+            
+            <div class="profile-wrapper">
+                <div class="profile-img-container">
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=400&auto=format&fit=crop" id="profileImg" class="profile-img" alt="Luis Contes">
+                    <div class="profile-upload-btn" onclick="changeImage('profile')"><i class="fa-solid fa-camera"></i></div>
+                </div>
+
+                <h1 class="profile-name" contenteditable="true" id="artistName">LUIS CONTES</h1>
+                <p class="profile-bio" contenteditable="true" id="artistBio">Artista / Cantante / Compositor. Escucha mi último lanzamiento en todas las plataformas digitales.</p>
+
+                <!-- SOCIAL MEDIA ICONS 3D -->
+                <div class="social-grid" id="socialGrid">
+                    <a href="https://spotify.com" target="_blank" class="social-3d-btn"><i class="fa-brands fa-spotify"></i></a>
+                    <a href="https://instagram.com" target="_blank" class="social-3d-btn"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://youtube.com" target="_blank" class="social-3d-btn"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="https://tiktok.com" target="_blank" class="social-3d-btn"><i class="fa-brands fa-tiktok"></i></a>
+                    <a href="https://apple.com" target="_blank" class="social-3d-btn"><i class="fa-brands fa-apple"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- LINK SECTION 3D -->
+        <div class="section-block">
+            <div class="section-header">
+                <div class="section-title"><i class="fa-solid fa-fire"></i> <span contenteditable="true">Música & Lanzamientos</span></div>
+                <button class="admin-btn" style="padding: 5px 10px; font-size:12px;" onclick="addLink('linksContainer')">+ Agregar Link</button>
+            </div>
+            
+            <div class="links-list" id="linksContainer">
+                <a href="#" class="btn-3d-link">
+                    <div class="link-left">
+                        <i class="fa-brands fa-spotify icon-main"></i>
+                        <span contenteditable="true">Escuchar Nuevo Sencillo en Spotify</span>
+                    </div>
+                    <i class="fa-solid fa-chevron-right"></i>
+                </a>
+                <a href="#" class="btn-3d-link">
+                    <div class="link-left">
+                        <i class="fa-brands fa-apple icon-main"></i>
+                        <span contenteditable="true">Guardar en Apple Music</span>
+                    </div>
+                    <i class="fa-solid fa-chevron-right"></i>
+                </a>
+            </div>
+        </div>
+
+        <!-- YOUTUBE SHORTS CAROUSEL -->
+        <div class="section-block">
+            <div class="section-header">
+                <div class="section-title"><i class="fa-brands fa-youtube"></i> <span contenteditable="true">YouTube Shorts & Videos</span></div>
+                <button class="admin-btn" style="padding: 5px 10px; font-size:12px;" onclick="addVideo('ytCarousel')">+ Añadir Video</button>
+            </div>
+            
+            <div class="carousel-container" id="ytCarousel">
+                <div class="carousel-card">
+                    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Video YouTube" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+
+        <!-- TIKTOK CAROUSEL -->
+        <div class="section-block">
+            <div class="section-header">
+                <div class="section-title"><i class="fa-brands fa-tiktok"></i> <span contenteditable="true">TikToks Populares</span></div>
+                <button class="admin-btn" style="padding: 5px 10px; font-size:12px;" onclick="addVideo('tiktokCarousel')">+ Añadir TikTok</button>
+            </div>
+            
+            <div class="carousel-container" id="tiktokCarousel">
+                <div class="carousel-card" style="display:flex; align-items:center; justify-content:center; color:#aaa;">
+                    <p style="font-size:12px; text-align:center; padding:10px;">Pega la URL Embed de tu TikTok aquí</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- BOTONES FLOTANTES DE EDICIÓN -->
+    <div class="admin-controls">
+        <button class="admin-btn" onclick="addNewSection()"><i class="fa-solid fa-plus"></i> Nueva Sección</button>
+        <button class="admin-btn" style="background: #00f0ff; color: #000;" onclick="savePage()"><i class="fa-solid fa-floppy-disk"></i> Guardar Cambios</button>
+    </div>
+
+    <script>
+        // Cambiar fotos (Perfil / Portada)
+        function changeImage(type) {
+            const url = prompt("Introduce la URL de la imagen que deseas usar:");
+            if (url) {
+                if (type === 'cover') {
+                    document.getElementById('coverImg').style.backgroundImage = `url('${url}')`;
+                } else if (type === 'profile') {
+                    document.getElementById('profileImg').src = url;
+                }
+            }
+        }
+
+        // Añadir Botón de Enlace
+        function addLink(containerId) {
+            const title = prompt("Título del botón:", "Nuevo Enlace");
+            const url = prompt("URL del enlace (http/...):", "#");
+            if (title) {
+                const container = document.getElementById(containerId);
+                const newLink = document.createElement('a');
+                newLink.href = url || '#';
+                newLink.target = '_blank';
+                newLink.className = 'btn-3d-link';
+                newLink.innerHTML = `
+                    <div class="link-left">
+                        <i class="fa-solid fa-link icon-main"></i>
+                        <span contenteditable="true">${title}</span>
+                    </div>
+                    <i class="fa-solid fa-chevron-right"></i>
+                `;
+                container.appendChild(newLink);
+            }
+        }
+
+        // Añadir Video / Short (Embed)
+        function addVideo(carouselId) {
+            const embedUrl = prompt("Introduce el enlace Embed del Video/Short (Ejemplo: https://www.youtube.com/embed/CODIGO):");
+            if (embedUrl) {
+                const carousel = document.getElementById(carouselId);
+                const card = document.createElement('div');
+                card.className = 'carousel-card';
+                card.innerHTML = `<iframe src="${embedUrl}" allowfullscreen></iframe>`;
+                carousel.appendChild(card);
+            }
+        }
+
+        // Añadir una Sección Completa Nueva
+        function addNewSection() {
+            const sectionName = prompt("Nombre de la nueva sección:", "NUEVA SECCIÓN");
+            if (!sectionName) return;
+
+            const appContainer = document.querySelector('.app-container');
+            const newSection = document.createElement('div');
+            newSection.className = 'section-block';
+            const uniqueId = 'sec-' + Date.now();
+
+            newSection.innerHTML = `
+                <div class="section-header">
+                    <div class="section-title"><i class="fa-solid fa-star"></i> <span contenteditable="true">${sectionName}</span></div>
+                    <button class="admin-btn" style="padding: 5px 10px; font-size:12px;" onclick="addLink('${uniqueId}')">+ Agregar Link</button>
+                </div>
+                <div class="links-list" id="${uniqueId}"></div>
+            `;
+
+            appContainer.appendChild(newSection);
+        }
+
+        // Guardar cambios en el almacenamiento local del navegador
+        function savePage() {
+            localStorage.setItem('luis_contes_page', document.documentElement.innerHTML);
+            alert("¡Cambios guardados con éxito en tu navegador!");
+        }
+
+        // Cargar cambios previos guardados
+        window.onload = function() {
+            const savedContent = localStorage.getItem('luis_contes_page');
+            if (savedContent) {
+                // Habilitar para cargar automáticamente si existe una versión guardada
+            }
+        };
+    </script>
+</body>
+</html>
